@@ -162,6 +162,7 @@ module Mhs
           current_user.forget_me!
           cookies.delete(:remember_me_token)
           set_current_user nil
+          reset_session
           redirect_to self.instance_eval( &self.class.mhs_authentication_system_options[:redirect_after_logout] )
         end
 
